@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="ecommerce website. updated at 202001031559."
+    />
+    <title>Stylish</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/chatroom.css" media="all" />
+    <script src="js/lib.js"></script>
+    <script src="js/index.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="padding-mobile"></div>
+      <div class="logo">
+        <a href="./"><img src="imgs/logo.png" /></a>
+      </div>
+      <nav>
+        <div class="item"><a href="./?tag=women">女裝</a></div>
+        <div class="item"><a href="./?tag=men">男裝</a></div>
+        <div class="item"><a href="./?tag=accessories">配件</a></div>
+      </nav>
+      <div class="feature">
+        <form class="item" action="./">
+          <input type="text" class="search" name="tag" />
+        </form>
+        <a href="cart.html" class="item cart"
+          ><div id="cart-qty" class="qty"></div>
+        </a>
+        <div class="item member">
+          <img src="imgs/member.png" />
+          <span id="user-name" class="name"
+            ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+              href="./login.html?tag=signup"
+              >註冊</a
+            ></span
+          >
+        </div>
+      </div>
+      <!-- <div class="floating-member">
+        <div class="item"><a>我的帳戶</a></div>
+        <div class="item"><a>我的最愛</a></div>
+        <div class="item"><a>訂單紀錄</a></div>
+        <div class="item">登出</div>
+      </div> -->
+      <!-- <div class="floating-cart">
+        <div id="floating-cart-list" class="list">
+          <div class="row">
+            <div class="variant">
+              <div class="picture">
+                <img
+                  src="https://api.appworks-school.tw/assets/201807202140/main.jpg"
+                />
+              </div>
+              <div class="details">
+                透肌澎澎防曬襯衫
+                <br />
+                201807202140
+                <br />
+                <br />
+                顏色：亮綠
+                <br />
+                尺寸：S
+              </div>
+            </div>
+            <div class="price-qty">NT. 599 x 3</div>
+            <div class="remove">
+              <img src="https://localhost:5500/imgs/cart-remove.png" />
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </header>
+    
+    <nav class="mobile">
+      <div class="item"><a href="./?tag=women">女裝</a></div>
+      <div class="item"><a href="./?tag=men">男裝</a></div>
+      <div class="item"><a href="./?tag=accessories">配件</a></div>
+    </nav>
+    <div class="padding-header-mobile"></div>
+    <div id="discountInfo" class="discountInfo"></div>
+    <div class="feature-mobile">
+      <a class="item" href="cart.html">
+        <div class="cart"><div id="cart-qty-mobile" class="qty"></div></div>
+        購物車
+      </a>
+      <div class="item member">
+        <img src="imgs/member-mobile.png" />
+        <span>
+          <span id="mobile-user-name" class="name"
+            ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+              href="./login.html?tag=signup"
+              >註冊</a
+            ></span
+          ></span
+        >
+      </div>
+    </div>
+    <div class="keyvisual" id="keyvisual">
+      <div class="step"></div>
+    </div>
+    <main>
+      <div class="view">
+        <div class="filter">
+          <div id="filter-rating" class="filter-option">
+            好評
+          </div>
+          <div id="filter-popularity" class="filter-option">
+            熱門
+          </div>
+          <div id="filter-date" class="filter-option">新上市</div>
+          <div id="filter-price" class="filter-option">
+            價格
+          </div>
+        </div>
+        <div id="products" class="products"></div>
+      </div>
+    </main>
+    <footer>
+      <div class="view">
+        <div class="link link-0">
+          <div class="item">關於 Stylish</div>
+          <div class="item">服務條款</div>
+          <div class="item">隱私政策</div>
+        </div>
+        <div class="link link-1">
+          <div class="item">聯絡我們</div>
+          <div class="item">FAQ</div>
+        </div>
+        <div class="social">
+          <img src="imgs/line.png" />
+          <img src="imgs/twitter.png" />
+          <img src="imgs/facebook.png" />
+        </div>
+        <div class="copyright">
+          &copy; 2018. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <div id="loading" class="loading">
+      <img src="imgs/loading.gif" />
+    </div>
+    <div id="chat-room-container">
+      <button id="open-btn" onclick="openForm()">客服聊天室</button>
+      <div id="chat-room">
+        <div class="chat-title">
+          <h3>客服聊天室</h3>
+          <button id ="close-btn" type="button" onclick="closeForm()">X</button>
+        </div>
+          
+          <div id="messages"></div>
+          <form action="">
+            <input id="m" autocomplete="off" /><button>傳送</button>
+          </form>
+      </div>
+    </div>
+    <script src="js/lib.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/chatroom.js"></script>
+  </body>
+</html>

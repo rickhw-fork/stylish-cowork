@@ -1,0 +1,111 @@
+#chat-room-container{ 
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box; 
+}
+
+#open-btn {
+  background-color: #bbbbbb;
+  border: 1px solid #3f3a3a;
+  border-radius: 5px 5px 0 0 ;
+  border-bottom: none;
+  height: 40px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  width: 300px;
+  font-size: 1.17em;
+  font-weight: bold;
+  box-shadow: 0 0 5px #bbbbbb;
+}
+#chat-room{
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  width: 350px;
+  z-index: 9;
+  border-radius: 5px 5px 0 0 ;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 0 5px #bbbbbb;
+  border-bottom: none;
+  box-sizing: border-box;
+}
+#chat-room .chat-title{
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background-color: #bbbbbb;
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+#chat-room #close-btn{
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  color: white;
+}
+#chat-room form { 
+  display: flex;
+  width: 100%; 
+  height: 40px;
+  border-top: 1px solid #bbbbbb;
+}
+#chat-room form input {
+   border: 0; 
+   width: 78%; 
+   margin-right: 2%;
+   padding: 10px;  
+}
+#chat-room form button { 
+  width: 25%; 
+  background-color: #bbbbbb;
+  border: none; 
+  padding: 10px; 
+  color: white;
+}
+#chat-room #messages { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 10px; 
+  overflow: auto;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+#chat-room #messages p { 
+  margin: 5px;
+  padding: 5px;
+  max-width: 200px;
+  word-wrap:break-word;
+  border-radius: 3px;
+}
+#chat-room .user {
+  flex-shrink: 1;
+  text-align: right;
+  background-color: rgb(228, 228, 228);
+  align-self:flex-end;
+}
+#chat-room .other {
+  flex-shrink: 1;
+  text-align: left;
+  background-color: rgb(94, 94, 94);
+  color: white;
+  align-self:flex-start;
+}
+
+@media (max-width: 1000px) {
+  #open-btn, #chat-room{
+    bottom: 60px;
+  }
+}

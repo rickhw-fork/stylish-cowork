@@ -1,0 +1,136 @@
+@import "common.css";
+/* main */
+main{
+	padding:20px 10px;padding-top:100px;text-align:center;
+	background-image: url("../imgs/thankBgc.jpg");
+	height: 560px;
+}
+
+
+@media(min-width:1024px){
+    main{
+        height: 560px;
+    }
+}
+
+@media(max-width:500px){
+    main{
+        height: 560px;
+    }
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+    padding-top: 50px;
+    flex-direction: column;
+    /* border: solid 1px black; */
+}
+
+h2{
+    /* font-family: Times New Roman; */
+    font-size: 20px;
+    margin-top: 20px;
+	/* color: rgb(143, 143, 143); */
+	color: rgb(70, 74, 77);
+    opacity: 0;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+   
+h2 {
+    animation: .6s title ease-in-out;
+    animation-delay: 1.2s;
+    /*播放動畫後停留在最後一格*/
+    animation-fill-mode: forwards;
+}
+.thxA{
+    
+    line-height: 35px;
+    opacity: 0;
+    animation: .6s title ease-in-out;
+    animation-delay: 1.2s;
+    /*播放動畫後停留在最後一格*/
+    animation-fill-mode: forwards;
+    color: rgb(70, 74, 77);
+    letter-spacing: 1px;
+}
+.thxB{
+    margin-top: 20px;
+    opacity: 0;
+    animation: .6s title ease-in-out;
+    animation-delay: 1.2s;
+    /*播放動畫後停留在最後一格*/
+    animation-fill-mode: forwards;
+    color: rgb(70, 74, 77);
+    letter-spacing: 1px;
+}
+
+.thxbtn{
+	letter-spacing: 2px;
+	margin-top: 40px;
+	padding: 5px 20px;
+	border-radius: 5px;
+	background-color: rgb(117, 121, 124);
+	color: rgb(248, 246, 246);
+	opacity: 0;
+    animation: .6s title ease-in-out;
+	animation-delay: 1.2s;
+	animation-fill-mode: forwards;
+	transition: ease-in .2s;
+}
+.thxbtn:hover{
+	background-color: rgb(70, 74, 77);
+	color: #fff;
+}
+
+.circle{
+    stroke-dasharray: 119.4;
+    stroke-dashoffset: 119.4;
+    /*畫出圈圈 dashoffset:1194->0*/
+}
+    /* input[type="checkbox"]:checked + svg  */
+.circle{
+    animation: circle 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.tick{
+    stroke-dasharray: 35;
+    stroke-dashoffset: 35;
+    /*畫出勾勾 dashoffset:350->0 */
+}
+    /* input[type="checkbox"]:checked +  */
+svg .tick{
+    animation: tick .8s ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: .95s;
+}
+@keyframes circle{
+    from{
+        stroke-dashoffset: 119.4;
+    }
+    to{
+        stroke-dashoffset: 238.8;
+    }
+}
+
+@keyframes tick{
+    from{
+        stroke-dashoffset: 35;
+    }
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes title {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+

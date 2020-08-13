@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stylish 產品資訊</title>
+    <link rel="stylesheet" type="text/css" href="css/product.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="css/chatroom.css" media="all" />
+    <script src="js/lib.js"></script>
+    <script src="js/product.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="padding-mobile"></div>
+      <div class="logo">
+        <a href="./"><img src="imgs/logo.png" /></a>
+      </div>
+      <nav>
+        <div class="item"><a href="./?tag=women">女裝</a></div>
+        <div class="item"><a href="./?tag=men">男裝</a></div>
+        <div class="item"><a href="./?tag=accessories">配件</a></div>
+      </nav>
+      <div class="feature">
+        <form class="item" action="./">
+          <input type="text" class="search" name="tag" />
+        </form>
+        <a href="cart.html" class="item cart"
+          ><div id="cart-qty" class="qty"></div
+        ></a>
+        <div class="item member">
+          <img src="imgs/member.png" />
+          <span id="user-name" class="name"
+            ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+              href="./login.html?tag=signup"
+              >註冊</a
+            ></span
+          >
+        </div>
+      </div>
+    </header>
+    <nav class="mobile">
+      <div class="item"><a href="./?tag=women">女裝</a></div>
+      <div class="item"><a href="./?tag=men">男裝</a></div>
+      <div class="item"><a href="./?tag=accessories">配件</a></div>
+    </nav>
+    <div class="padding-header-mobile"></div>
+    <div class="feature-mobile">
+      <a class="item" href="cart.html">
+        <div class="cart"><div id="cart-qty-mobile" class="qty"></div></div>
+        購物車
+      </a>
+      <div class="item member">
+        <img src="imgs/member-mobile.png" />
+        <span id="mobile-user-name" class="name"
+          ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+            href="./login.html?tag=signup"
+            >註冊</a
+          ></span
+        >
+      </div>
+    </div>
+    <main>
+      <div class="view">
+        <div id="product-main-image" class="main-image"></div>
+        <div class="details">
+          <div id="product-name" class="name"></div>
+          <div id="product-id" class="id"></div>
+          <div id="product-price" class="price"></div>
+          <div id="product-colors" class="colors">
+            <span class="title">顏色 &nbsp; |</span>
+          </div>
+          <div id="product-sizes" class="sizes">
+            <span class="title">尺寸 &nbsp; |</span>
+          </div>
+          <div class="qty">
+            <span class="title">數量 &nbsp; |</span>
+            <div id="product-qty" class="chooser">
+              <div class="op" data-value="-1">-</div>
+              <div class="value"></div>
+              <div class="op" data-value="1">+</div>
+            </div>
+          </div>
+          <div class="add-cart">
+            <button id="product-add-cart-btn">加入購物車</button>
+          </div>
+          <div class="add-list">
+            <button id="product-add-list-btn">♡ 加入我的最愛</button>
+          </div>
+          <div id="product-summary" class="summary"></div>
+        </div>
+        <div class="separator">
+          <div class="title">更多產品資訊</div>
+          <div class="line"></div>
+        </div>
+        <div class="description">
+          <div class="story" id="product-story"></div>
+          <div class="images" id="product-images"></div>
+        </div>
+        <div class="separator">
+          <div class="title">看看別人怎麼說</div>
+          <div class="line"></div>
+        </div>
+        <div id="reviews" class="reviews">
+          <div class="average">
+            <div class="rating">
+              <span id="average-rating" class="rating-number">-</span>
+              <span>&nbsp;/&nbsp;5</span>
+              <span id="average-rating-star" class="rating-star">★★★★★</span>
+            </div>
+            <div class="rating-selection">
+              <button id="all-star" class="selection-btn">
+                全部
+              </button>
+              <button id="five-star" class="selection-btn">5 星</button>
+              <button id="four-star" class="selection-btn">4 星</button>
+              <button id="three-star" class="selection-btn">3 星</button>
+              <button id="two-star" class="selection-btn">2 星</button>
+              <button id="one-star" class="selection-btn">1 星</button>
+            </div>
+          </div>
+          <div id="comments" class="comments">
+            <!-- <div class="review">
+            <div class="user">fe****n</div>
+            <div class="rating">
+              <span class="rating-star">★★★★★</span>
+            </div>
+            <div class="item">
+              <div class="color">顏色：白</div>
+              <div class="size">尺寸：M</div>
+              <div class="qty">數量：2</div>
+            </div>
+            <div class="comment">
+              買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來買起來
+            </div>
+            <div class="time">2020-6-12 12:30</div>
+          </div> -->
+          </div>
+        </div>
+        <div class="separator">
+          <div class="title">你可能也喜歡</div>
+          <div class="line"></div>
+        </div>
+        <div class="more-products">
+          <!-- <a class="product" href="#">
+            <img
+              src="https://api.appworks-school.tw/assets/201807242211/main.jpg"
+            />
+            <div class="name">時尚輕鬆休閒西裝</div>
+            <div class="price">TWD.2399</div>
+          </a> -->
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="view">
+        <div class="link link-0">
+          <div class="item">關於 Stylish</div>
+          <div class="item">服務條款</div>
+          <div class="item">隱私政策</div>
+        </div>
+        <div class="link link-1">
+          <div class="item">聯絡我們</div>
+          <div class="item">FAQ</div>
+        </div>
+        <div class="social">
+          <img src="imgs/line.png" />
+          <img src="imgs/twitter.png" />
+          <img src="imgs/facebook.png" />
+        </div>
+        <div class="copyright">
+          &copy; 2018. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <div id="loading" class="loading">
+      <img src="imgs/loading.gif" />
+    </div>
+    <div id="chat-room-container">
+      <button id="open-btn" onclick="openForm()">客服聊天室</button>
+      <div id="chat-room">
+        <div class="chat-title">
+          <h3>客服聊天室</h3>
+          <button id ="close-btn" type="button" onclick="closeForm()">X</button>
+        </div>
+          
+          <div id="messages"></div>
+          <form action="">
+            <input id="m" autocomplete="off" /><button>傳送</button>
+          </form>
+      </div>
+    </div>
+    <script src="js/lib.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/chatroom.js"></script>
+  </body>
+</html>

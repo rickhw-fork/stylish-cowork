@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="ecommerce website. updated at 202001031559."
+    />
+    <title>Stylish 2019 Winter</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css" media="all" />
+    <script src="js/lib.js"></script>
+    <script src="js/login.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="padding-mobile"></div>
+      <div class="logo">
+        <a href="./"><img src="imgs/logo.png" /></a>
+      </div>
+      <nav>
+        <div class="item"><a href="./?tag=women">女裝</a></div>
+        <div class="item"><a href="./?tag=men">男裝</a></div>
+        <div class="item"><a href="./?tag=accessories">配件</a></div>
+      </nav>
+      <div class="feature">
+        <form class="item" action="./">
+          <input type="text" class="search" name="tag" />
+        </form>
+        <a href="cart.html" class="item cart"
+          ><div id="cart-qty" class="qty"></div>
+        </a>
+        <div class="item member">
+          <img src="imgs/member.png" />
+          <span id="user-name" class="name"
+            ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+              href="./login.html?tag=signup"
+              >註冊</a
+            ></span
+          >
+        </div>
+      </div>
+    </header>
+    <nav class="mobile">
+      <div class="item"><a href="./?tag=women">女裝</a></div>
+      <div class="item"><a href="./?tag=men">男裝</a></div>
+      <div class="item"><a href="./?tag=accessories">配件</a></div>
+    </nav>
+    <div class="padding-header-mobile"></div>
+    <div class="feature-mobile">
+      <a class="item" href="cart.html">
+        <div class="cart"><div id="cart-qty-mobile" class="qty"></div></div>
+        購物車
+      </a>
+      <div class="item member">
+        <img src="imgs/member-mobile.png" />
+        <span id="mobile-user-name" class="name"
+          ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+            href="./login.html?tag=signup"
+            >註冊</a
+          ></span
+        >
+      </div>
+    </div>
+    <main>
+      <div id="sign-up" class="form">
+        <h2 class="title">註冊</h2>
+        <input
+          id="sign-up-email"
+          name="email"
+          type="email"
+          placeholder="Eamil"
+          required
+        />
+        <input
+          id="sign-up-name"
+          name="name"
+          type="text"
+          placeholder="使用者名稱"
+          required
+        />
+        <input
+          id="sign-up-password"
+          name="password"
+          type="password"
+          placeholder="自訂密碼"
+          required
+        />
+        <div class="btn native-login-btn">
+          <button id="sign-up-btn" type="button">註冊</button>
+        </div>
+        <div class="login-separator">
+          <div class="line"></div>
+          <div>其它方式登入</div>
+          <div class="line"></div>
+        </div>
+        <div class="btn fb-login-btn">
+          <button id="fb-login-btn-in-signup">
+            <img src="imgs/facebook.png" />以 Facebook 登入
+          </button>
+        </div>
+        <p>
+          已經有帳號了？<a href="./login.html?tag=signin">&nbsp;登入&nbsp;</a>
+        </p>
+      </div>
+      <div id="sign-in" class="form">
+        <h2 class="title">登入</h2>
+        <input
+          id="sign-in-email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          required
+        />
+        <input
+          id="sign-in-password"
+          name="password"
+          type="password"
+          placeholder="密碼"
+          required
+        />
+        <div class="btn native-login-btn">
+          <button id="sign-in-btn" type="button">登入</button>
+        </div>
+        <div class="login-separator">
+          <div class="line"></div>
+          <div>其它方式登入</div>
+          <div class="line"></div>
+        </div>
+        <div class="btn fb-login-btn">
+          <button id="fb-login-btn-in-signin">
+            <img src="imgs/facebook.png" />以 Facebook 登入
+          </button>
+        </div>
+        <p>
+          還沒有帳號？<a href="./login.html?tag=signup">&nbsp;註冊&nbsp;</a>
+        </p>
+      </div>
+    </main>
+    <footer>
+      <div class="view">
+        <div class="link link-0">
+          <div class="item">關於 Stylish</div>
+          <div class="item">服務條款</div>
+          <div class="item">隱私政策</div>
+        </div>
+        <div class="link link-1">
+          <div class="item">聯絡我們</div>
+          <div class="item">FAQ</div>
+        </div>
+        <div class="social">
+          <img src="imgs/line.png" />
+          <img src="imgs/twitter.png" />
+          <img src="imgs/facebook.png" />
+        </div>
+        <div class="copyright">
+          &copy; 2018. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <div id="loading" class="loading">
+      <img src="imgs/loading.gif" />
+    </div>
+  </body>
+</html>

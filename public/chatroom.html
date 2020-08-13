@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" type="text/css" href="css/chatroom.css" media="all" />
+  </head>
+  <body>
+    <button id="open-btn" onclick="openForm()">客服聊天室</button>
+    <div id="chat-room">
+      <div class="chat-title">
+        <h3>客服聊天室</h3>
+        <button id ="close-btn" type="button" onclick="closeForm()">X</button>
+      </div>
+        
+        <div id="messages"></div>
+        <form action="">
+          <input id="m" autocomplete="off" /><button>傳送</button>
+        </form>
+    </div>
+    <script src="js/lib.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/chatroom.js"></script>
+  </body>
+</html>

@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+     * { 
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+      }
+      body { 
+        font: 13px Helvetica, Arial; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      header{
+        display: flex;
+        align-items: center;
+        height: 40px;
+        width: 100%;
+        background-color: #bbbbbb;
+        color: white;
+        padding: 10px 50px;
+        margin-bottom: 10px;
+      }
+      header h3{
+        margin-right: auto;
+      }
+      main{
+        display: flex;
+      }
+      #users-container{
+        border: 1px solid #3f3a3a;
+        border-radius: 5px;
+        height: 500px;
+        width: 30%;
+        min-width: 200px;
+        padding: 10px;
+      }
+      .user-tab {
+        background-color: #bbbbbb;
+        border-radius: 5px;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 10px;
+        color: white;
+        cursor: pointer;
+        opacity: 0.8;
+        width: 100%;
+        font-size: 1.17em;
+        font-weight: bold;
+        box-shadow: 0 0 5px #bbbbbb;
+        text-align: center;
+        justify-self: center;
+        position: relative;
+      }
+      .circle{
+        width: 10px;
+        height: 10px;
+        right: 5px;
+        bottom: 15px;
+        position: absolute;
+        border-radius: 50%;
+      }
+      .new {
+        background-color:tomato;
+      }
+      .current-user-tab{
+        border: 1px solid #3f3f3f;
+      }
+      #message-tab{
+        border: 1px solid #3f3a3a;
+        overflow: hidden;
+        border-radius: 5px;
+        margin-left: 10px;
+        height: 500px;
+        width: 40%;
+        min-width: 300px;
+      }
+      #messages-container{
+        height: 460px;
+        padding: 10px;
+      }
+      .messages { 
+        list-style-type: none; 
+        height: 440px;
+        margin: 0; 
+        padding: 0; 
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .messages p { 
+        margin: 5px;
+        padding: 5px;
+        max-width: 200px;
+        word-wrap:break-word;
+        border-radius: 3px;
+      }
+      .services{
+        flex-shrink: 1;
+        text-align: right;
+        background-color: rgb(228, 228, 228);
+        align-self:flex-end;
+      }
+      .user {
+        flex-shrink: 1;
+        text-align: left;
+        background-color: rgb(94, 94, 94);
+        color: white;
+        align-self:flex-start;
+      }
+      form { 
+        z-index: 1;
+        display: flex;
+        width: 100%; 
+        height: 40px;
+        border-top: 1px solid #bbbbbb;
+      }
+      .line{
+        position: sticky;
+        height: 5px;
+        background-color: #bbbbbb;
+      }
+      form input {
+         border: 0; 
+         width: 78%; 
+         margin-right: 2%;
+         padding: 10px;  
+      }
+      form button { 
+        width: 20%; 
+        background-color: #bbbbbb;
+        border: none; 
+        padding: 10px; 
+        color: white;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>Customer Servers</h3>
+      <p id="server-messages"></p>
+    </header>
+    <main>
+      <div id="users-container"></div>
+      <div id="message-tab">
+        <div id="messages-container"></div>
+        <form action="">
+          <input id="m" autocomplete="off" /><button>Send</button>
+        </form>
+      </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+      $('#users-container').click(onUserClick)
+      
+      function onUserClick(e){
+        const user = JSON.parse(e.target.getAttribute("index"))
+        activeUserMessage(user);
+        $(e.target).siblings().removeClass('current-user-tab');
+        $(e.target).addClass('current-user-tab');
+        $(e.target).children('div').removeClass('new');
+      }
+
+      function activeUserMessage(user){
+        $('#messages-container').children().hide();
+        $(`#${user.id}`).show();
+        activeUser = user;
+        $(`#${user.id}`).scrollTop($(`#${user.id}`).prop('scrollHeight'));
+      }
+
+      let localUser
+      let localService;
+      let activeUser;
+      
+      $(function () {
+        const serverToken = 'service token';
+        var socket = io();
+        if(serverToken ){
+          socket.emit('server connect', { serverToken });
+        }
+
+        socket.on('server connect', ({ service, onlineUsers, msg })=>{
+          if(service){
+            localService = service;
+          }
+          if(msg){
+            $('#server-messages').text( msg );
+          }
+          if(onlineUsers.length > 0){
+            $('#users-container').html('');
+            $('#messages-container').html('');
+            onlineUsers.map((u)=>{
+              if( u !== null){
+                const displayName = u.name == '顧客' ? u.id : u.name;
+                const user = { name: u.name, displayName, id: u.id, socketId: u.socketId}
+                $('#users-container').append($('<div>').text(displayName).addClass('user-tab').attr("index", JSON.stringify(user)).append($('<div>').addClass('circle new')));
+                const userMessage = $('#messages-container').append($('<div>').attr("id", user.id).addClass('messages'))
+                if(u.history.length >0){
+                  u.history.map(m => {
+                    if(m.send === service.id){
+                      $(`#${u.id}`).append($('<p>').addClass('services').text(m.msg))
+                    }else{
+                      $(`#${u.id}`).append($('<p>').addClass('user').text(m.msg))
+                    }
+                    $(`#${u.id}`).hide();
+                  })
+                }
+              }
+            })
+          }
+        })
+
+        
+        socket.on('user connect', ({ onlineUsers})=>{
+          $('#users-container').html('');
+          $('#messages-container').html('');
+          if(onlineUsers.length > 0){
+            onlineUsers.map((u)=>{
+              if( u !== null){
+                const displayName = u.name == '顧客' ? u.id : u.name;
+                const user = { name: u.name, displayName, id: u.id, socketId: u.socketId}
+                $('#users-container').append($('<div>').text(displayName).addClass('user-tab').attr("index", JSON.stringify(user)).append($('<div>').addClass('circle new')));
+                const userMessage = $('#messages-container').append($('<div>').attr("id", user.id).addClass('messages'))
+                if(u.history.length >0){
+                  u.history.map(m => {
+                    if(m.send === localService.id){
+                      $(`#${u.id}`).append($('<p>').addClass('services').text(m.msg))
+                    }else{
+                      $(`#${u.id}`).append($('<p>').addClass('user').text(m.msg))
+                    }
+                    $(`#${u.id}`).hide();
+                  })
+                }
+              }
+            })
+          }
+        });
+
+        socket.on('user disconnect',({onlineUsers})=>{
+          $('#users-container').html('');
+          if(onlineUsers.length > 0){
+            onlineUsers.map((u)=>{
+              if( u !== null){
+                const displayName = u.name == '顧客' ? u.id : u.name;
+                const user = { name: u.name, displayName, id: u.id, socketId: u.socketId}
+                $('#users-container').append($('<div>').text(displayName).addClass('user-tab').attr("index", JSON.stringify(user)).append($('<div>').addClass('circle new')));
+                const userMessage = $('#messages-container').append($('<div>').attr("id", user.id).addClass('messages'))
+                if(u.history.length >0){
+                  u.history.map(m => {
+                    if(m.send === localService.id){
+                      $(`#${u.id}`).append($('<p>').addClass('services').text(m.msg))
+                    }else{
+                      $(`#${u.id}`).append($('<p>').addClass('user').text(m.msg))
+                    }
+                    $(`#${u.id}`).hide();
+                  })
+                }
+              }
+            })
+          }
+        })
+
+        socket.on('chat message', ({send, receive, msg}) => {
+          if(send.id === localService.id){
+            $(`#${receive.id}`).append($('<p>').text(msg).addClass('services'));
+            $(`#${receive.id}`).scrollTop($(`#${receive.id}`).prop('scrollHeight'));
+          }else{
+            $(`#${send.id}`).append($('<p>').text(msg).addClass('user'))
+            $(`#${send.id}`).scrollTop($(`#${send.id}`).prop('scrollHeight'));
+            if(!activeUser || send.id !== activeUser.id){
+              $('#users-container').children('div').each(function(){
+                const user = JSON.parse(this.getAttribute('index'))
+                if (user.id === send.id){
+                  $(this).children('div').addClass('new');
+                }
+              })
+            }
+          }
+        });
+        
+        $('form').submit(function(e){
+          e.preventDefault(); // prevents page reloading
+          const msg = $('#m').val()
+          if(msg != null && msg != ''){
+            socket.emit('chat message', { send: localService, receive: activeUser, msg});
+            $('#m').val('');
+          }
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>

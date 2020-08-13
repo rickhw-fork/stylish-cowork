@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stylish 個人資訊</title>
+    <link rel="stylesheet" type="text/css" href="css/profile.css" media="all" />
+    <script src="js/lib.js"></script>
+    <script src="js/profile.js"></script>
+    <script
+      src="https://kit.fontawesome.com/4503b8512c.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="padding-mobile"></div>
+      <div class="logo">
+        <a href="./"><img src="imgs/logo.png" /></a>
+      </div>
+      <nav>
+        <div class="item"><a href="./?tag=women">女裝</a></div>
+        <div class="item"><a href="./?tag=men">男裝</a></div>
+        <div class="item"><a href="./?tag=accessories">配件</a></div>
+      </nav>
+      <div class="feature">
+        <form class="item" action="./">
+          <input type="text" class="search" name="tag" />
+        </form>
+        <a href="cart.html" class="item cart"
+          ><div id="cart-qty" class="qty"></div
+        ></a>
+        <div class="item member">
+          <img src="imgs/member.png" />
+          <span id="user-name" class="name"
+            ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+              href="./login.html?tag=signup"
+              >註冊</a
+            ></span
+          >
+        </div>
+      </div>
+    </header>
+    <nav class="mobile">
+      <div class="item"><a href="./?tag=women">女裝</a></div>
+      <div class="item"><a href="./?tag=men">男裝</a></div>
+      <div class="item"><a href="./?tag=accessories">配件</a></div>
+    </nav>
+    <div class="padding-header-mobile"></div>
+    <div class="feature-mobile">
+      <a class="item" href="cart.html">
+        <div class="cart"><div id="cart-qty-mobile" class="qty"></div></div>
+        購物車
+      </a>
+      <div class="item member">
+        <img src="imgs/member-mobile.png" />
+        <span>
+          <span id="mobile-user-name" class="name"
+            ><a href="./login.html?tag=signin">登入</a>&nbsp;|&nbsp;<a
+              href="./login.html?tag=signup"
+              >註冊</a
+            ></span
+          ></span
+        >
+      </div>
+    </div>
+    <main>
+      <div class="view">
+        <div class="left">
+          <div class="memberItem" onclick="getUserProfile()">
+            <i class="fas fa-user-circle"></i>
+            <div class="itemText">我的帳戶</div>
+          </div>
+          <div class="memberItem" onclick="showFav()">
+            <i class="fas fa-heart fa-1x"></i>
+            <div class="itemText">我的最愛</div>
+          </div>
+          <div class="memberItem" onclick="showOrderHistories()">
+            <i class="fas fa-clipboard-list"></i>
+            <div class="itemText">購買紀錄</div>
+          </div>
+          <div class="memberItem" onclick="showMyReview()">
+            <i class="fas fa-star"></i>
+            <div class="itemText">我的評價</div>
+          </div>
+          <div class="memberItem">
+            <i class="fas fa-bell"></i>
+            <div class="itemText">通知</div>
+          </div>
+          <div
+            class="memberItem"
+            onclick="app.user.logout(window.location = './index.html')"
+          >
+            <i class="fas fa-sign-out-alt"></i>
+            <div class="itemText">登出</div>
+          </div>
+        </div>
+
+        <div class="right">
+          <h2 id="headline" class="headline">會員基本資訊</h2>
+          <div id="profile" class="profile">
+            <div class="picture">
+              <img id="profile-picture" />
+            </div>
+            <div class="details" id="profile-details"></div>
+          </div>
+          <div id="orderStateNav" class="orderStateNav">
+            <div
+              id="0"
+              class="state stateCurrent"
+              onclick="showHistories('all'), stateChangeCss('0')"
+            >
+              全部
+            </div>
+            <div
+              id="1"
+              class="state"
+              onclick="showHistories('created'), stateChangeCss('1')"
+            >
+              待付款
+            </div>
+            <div
+              id="2"
+              class="state"
+              onclick="showHistories('preparing'), stateChangeCss('2')"
+            >
+              待出貨
+            </div>
+            <div
+              id="3"
+              class="state"
+              onclick="showHistories('shipping'), stateChangeCss('3')"
+            >
+              待收貨
+            </div>
+            <div
+              id="4"
+              class="state"
+              onclick="showHistories('shipped'), stateChangeCss('4')"
+            >
+              完成
+            </div>
+          </div>
+          <div id="myReviews" class="histories"></div>
+          <div id="histories" class="histories">
+            <!-- 單筆 -->
+            <!-- <div class="history">
+						<div class="order_item">
+							<div class="order_item_detail">
+								<div class="picture">
+									<img src="https://api.appworks-school.tw/assets/201807202140/main.jpg">
+								</div>
+								<div class="details">透肌澎澎防曬襯衫
+									<div class="detailText">123123123213</div>
+									<br>
+									<div class="detailText">亮綠 / M</div>
+									<div class="detailText">X1</div>
+								</div>
+							</div>
+							<div class="order_price">$100</div>
+							<div class="order_review">
+								<span class="reviewBtn" onclick="showRate()">評價</span>
+							</div>	
+						</div>
+						<div class="order_item">
+							<div class="order_item_detail">
+								<div class="picture">
+									<img src="https://api.appworks-school.tw/assets/201807202140/main.jpg">
+								</div>
+								<div class="details">透肌澎澎防曬襯衫
+									<div class="detailText">123123123213</div>
+									<br>
+									<div class="detailText">亮綠 / M</div>
+									<div class="detailText">X1</div>
+								</div>
+							</div>
+							<div class="order_price">$100</div>
+							<div class="order_review">
+								<span class="reviewBtn" onclick="showRate()">評價</span>
+							</div>	
+						</div>
+						<div class="seeMore">
+							<div class="seeMoreBtn">訂單詳情</div>	
+							<div id="moreDiv" class="moreDiv">
+								<div>收件人&ensp;&ensp;：Grace</div>
+								<div>付款方式：信用卡</div>
+								<div>電話號碼：0908605684</div>
+								<div>收件地址：台北市中正區台北市中正區廈門街113巷17號</div>
+								<div>運費：$ 60</div>
+							</div>
+						</div>
+						<div class="order_total_price">訂單金額： $ NT.
+							<span class="priceNum">200</span>
+						</div>
+									
+					</div> -->
+          </div>
+
+          <div id="myFavorites" class="myFavorites">
+            <!--<div class="fav">
+						<div class="favImg">
+							<img src="https://api.appworks-school.tw/assets/201807202140/main.jpg">
+						</div>
+						<div class="favTitle">透肌澎澎防曬襯衫</div>
+						<div class="favcolors">
+							<div class="favColor" style="background-color: rgb(221, 255, 187);"></div>
+							<div class="favColor" style="background-color: rgb(204, 204, 204);"></div>
+						</div>
+						<div class="favBottom">
+							<span class="favPrice">TWD.200</span>
+							<i id="favIcon-0" class="fas fa-heart fa-1x" onclick="profileAddFavOrCancel(0)"></i>
+						</div>
+					</div>
+					<div class="fav">
+						<div class="favImg">
+							<img src="https://api.appworks-school.tw/assets/201807202157/main.jpg">
+						</div>
+						<div class="favTitle">透肌澎澎防曬襯衫</div>
+						<div class="favcolors">
+							<div class="favColor" style="background-color: rgb(221, 255, 187);"></div>
+							<div class="favColor" style="background-color: rgb(204, 204, 204);"></div>
+						</div>
+						<div class="favBottom"><span class="favPrice">TWD.200</span><i id="favIcon-1" class="fas fa-heart fa-1x" onclick="profileAddFavOrCancel(1)"></i></div>
+					</div>
+					<div class="fav">
+						<div class="favImg">
+							<img src="https://api.appworks-school.tw/assets/201807242230/main.jpg">
+						</div>
+						<div class="favTitle">透肌澎澎防曬襯衫</div>
+						<div class="favcolors">
+							<div class="favColor" style="background-color: rgb(221, 255, 187);"></div>
+							<div class="favColor" style="background-color: rgb(204, 204, 204);"></div>
+						</div>
+						<div class="favBottom"><span class="favPrice">TWD.200</span><i id="favIcon-2" class="fas fa-heart fa-1x" onclick="profileAddFavOrCancel(2)"></i></div>
+					</div>
+					<div class="fav">
+						<div class="favImg">
+							<img src="https://api.appworks-school.tw/assets/201807202140/main.jpg">
+						</div>
+						<div class="favTitle">透肌澎澎防曬襯衫</div>
+						<div class="favcolors">
+							<div class="favColor" style="background-color: rgb(221, 255, 187);"></div>
+							<div class="favColor" style="background-color: rgb(204, 204, 204);"></div>
+						</div>
+						<div class="favBottom"><span class="favPrice">TWD.200</span><i id="favIcon-3" class="fas fa-heart fa-1x" onclick="profileAddFavOrCancel(3)"></i></div>
+					</div>
+					<div class="fav">
+						<div class="favImg">
+							<img src="https://api.appworks-school.tw/assets/201807242216/main.jpg">
+						</div>
+						
+						<div class="favTitle">透肌澎澎防曬襯衫</div>
+						<div class="favcolors">
+							<div class="favColor" style="background-color: rgb(221, 255, 187);"></div>
+							<div class="favColor" style="background-color: rgb(204, 204, 204);"></div>
+						</div>
+						<div class="favBottom"><span class="favPrice">TWD.200</span><i id="favIcon-4" class="fas fa-heart fa-1x" onclick="profileAddFavOrCancel(4)"></i></div>
+					</div>-->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="view">
+        <div class="link link-0">
+          <div class="item">關於 Stylish</div>
+          <div class="item">服務條款</div>
+          <div class="item">隱私政策</div>
+        </div>
+        <div class="link link-1">
+          <div class="item">聯絡我們</div>
+          <div class="item">FAQ</div>
+        </div>
+        <div class="social">
+          <img src="imgs/line.png" />
+          <img src="imgs/twitter.png" />
+          <img src="imgs/facebook.png" />
+        </div>
+        <div class="copyright">
+          &copy; 2018. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <div id="darkbgc" class="darkbgc"></div>
+    <div id="rateBoard" class="rateBoard">
+      <div class="rateTitle">
+        <div class="rateTitleContent">評價此商品</div>
+        <div onclick="cancelRate()" class="closeRateBoard">X</div>
+      </div>
+
+      <div class="rate_item_detail">
+        <div id="rateInfo" class="rate_left">
+          <div class="rate_picture">
+            <img
+              src="https://api.appworks-school.tw/assets/201807202140/main.jpg"
+            />
+          </div>
+          <div class="rate_product">
+            透肌澎澎防曬襯衫
+            <div class="detailText">亮綠 / M</div>
+          </div>
+        </div>
+
+        <div class="rate_right">
+          <div class="rate_right2">
+            <fieldset class="rating">
+              <input
+                onclick="rate(value);"
+                type="radio"
+                id="star5"
+                name="rating"
+                value="5"
+              /><label class="full" for="star5"></label>
+              <input
+                onclick="rate(value);"
+                type="radio"
+                id="star4"
+                name="rating"
+                value="4"
+              /><label class="full" for="star4"></label>
+              <input
+                onclick="rate(value);"
+                type="radio"
+                id="star3"
+                name="rating"
+                value="3"
+              /><label class="full" for="star3"></label>
+              <input
+                onclick="rate(value);"
+                type="radio"
+                id="star2"
+                name="rating"
+                value="2"
+              /><label class="full" for="star2"></label>
+              <input
+                onclick="rate(value);"
+                type="radio"
+                id="star1"
+                name="rating"
+                value="1"
+              /><label class="full" for="star1"></label>
+            </fieldset>
+            <br />
+            <textarea
+              class="rateTextInput"
+              name=""
+              id="rateTextInput"
+              cols="30"
+              rows="4"
+              placeholder="輸入評價..."
+            ></textarea>
+          </div>
+          <div id="rate_bottom" class="rate_bottom">
+            <span id="rateBtn" class="rateBtn">送出評價</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="loading" class="loading">
+      <img src="imgs/loading.gif" />
+    </div>
+
+    <script></script>
+  </body>
+</html>

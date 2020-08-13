@@ -1,0 +1,530 @@
+@import "common.css";
+/* main */
+
+main{
+	padding:20px 10px;padding-top:10px;padding-bottom:0px;text-align:center;margin-bottom: 150px;
+}
+main>.view{
+	max-width:1000px;
+	display: flex;
+	justify-content: space-between;
+}
+/* 會員資料 */
+.headline{
+	padding-bottom: 15px;
+}
+.profile{
+	display: flex;
+	justify-content: center;
+}
+
+/* 我的評價 */
+.myReviewText{
+	background-color: rgb(177, 171, 171);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+#myReviews{
+	margin-top: 20px;
+}
+
+/* 訂單記錄 */
+.left{
+	/* margin-top: 15px; */
+	width:10%;
+	/* border: solid 1px red; */
+}
+
+.memberItem{
+	border-bottom: solid 1px rgb(185, 182, 182);
+	padding: 15px;
+	cursor: pointer;
+}
+.memberItem:last-child{
+	border-bottom: solid 0px black;
+}
+.right{
+	width:85%;
+	/* background-color: rgb(147, 226, 167); */
+}
+.orderStateNav{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background-color: #bed3e4; */
+	
+	/* color: rgba(255, 255, 255, 0.897); */
+	margin-bottom: 30px;
+}
+.state{
+	padding: 5px 0px;
+	letter-spacing: 1px;
+	flex:1;
+	cursor: pointer;
+	border-bottom:solid 0px  #40474d;
+}
+.state:hover{
+	color: #878888;
+}
+.stateCurrent{
+	border-bottom:solid 3px  #40474d;
+}
+
+.history{
+	border: solid 3px rgb(163, 161, 161);
+	border-radius: 20px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.order_item{
+	border-bottom: solid 1px rgb(197, 195, 195);
+	height: 120px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+.order_item:last-child{
+	border-bottom: solid 0px rgb(117, 27, 27);
+}
+.order_item_detail{
+	width: 85%;
+	/* background-color: rgb(82, 201, 181); */
+	display: flex;
+}
+.picture{
+	width: 80px;
+
+}
+.picture img{
+	width: 100%;
+}
+.details{
+	margin-left: 10px;
+	/* background-color: rgb(90, 162, 221); */
+	text-align: left;
+	letter-spacing: 2px;
+}
+.detailText{
+	color: #878888;
+	font-size: 10px;
+}
+.order_price{
+	width:5%;
+	/* background-color: rgb(202, 230, 126); */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.order_review{
+	width:5%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.reviewBtn{
+	padding: 3px;
+	background-color:  rgb(126, 123, 123);
+	color: aliceblue;
+	border-radius: 3px;
+}
+.reviewBtn2{
+	padding: 3px;
+	background-color: rgb(126, 123, 123);
+	color: aliceblue;
+	border-radius: 3px;
+}
+.reviewBtn:hover{
+	background-color: rgb(105, 103, 103);
+}
+.order_total_price{
+	text-align: end;
+}
+.priceNum{
+	margin-left: 5px;
+	font-size: 25px;
+}
+
+.seeMore{
+	font-size: 14px;
+	/* background-color: rgb(224, 221, 221); */
+}
+.seeMoreBtn{
+	background-color: rgb(224, 221, 221);
+	cursor: pointer;
+	color: #5a5c5c;
+	transition: ease .3s;
+	margin-bottom: 5px;
+}
+.seeMoreBtn:hover{
+	background-color: rgb(184, 181, 181);
+	color: #fff;
+}
+.moreDiv{
+	display: none;
+	text-align: start;
+	letter-spacing: 0.5px;
+	color: #7f8080;
+	line-height: 1.5rem;
+}
+.moreDiv>div:first-child{
+	margin-top: 5px;
+}
+.moreDiv>div:last-child{
+	text-align: end;
+	margin-top: 10px;
+}
+
+
+
+@media(max-width:1200px){
+	main>.view{
+		max-width:850px
+	}
+	.rateBoard{
+		width: 700px;
+		padding: 20px 25px;
+	}
+	.right{
+		width:83%;
+	}
+	.left{
+		width:13%;
+	}
+	.rateBtn{
+		padding: 5px 10px;
+	}
+	.rate_bottom{
+		margin-left: 40px;
+	}
+	.rateTextInput{
+		width: 100%;
+	}
+	.rate_right {
+		display: flex;
+	}
+}
+@media(max-width:900px){
+	
+	main>.view{
+		max-width:600px
+	}
+	.left{
+		width:12%;
+	}
+	.rateBoard{
+		width: 600px;
+		padding: 15px 20px;
+	}
+	.rate_bottom{
+		margin-left: 20px;
+	}
+	.rateBtn{
+		padding: 3px;
+		font-size: 10px;
+	}
+	.rateTextInput{
+		width: 90%;
+	}
+	.rate_right {
+		display: flex;
+	}
+}
+
+.order_item2 {
+    /* border-bottom: solid 1px rgb(197, 195, 195); */
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0px;
+}
+@media(max-width:550px){
+	.myReviewText{
+		background-color: rgb(177, 171, 171);
+		color: #fff;
+		padding: 0px 5px;
+		border-radius: 5px;
+		margin-top: 10px;
+	}
+	main>.view{
+		max-width:350px
+	}
+	.state{
+		font-size: 12px;
+	}
+	.details{
+		font-size: 14px;
+	}
+	.orderStateNav{
+		margin-bottom: 10px;
+	}
+	.order_item_detail{
+		width: 70%;
+	}
+	.itemText{
+		display: none;
+	}
+	.order_item{
+		height: 120px;
+		margin-bottom: 10px;
+	}
+	.rateBoard{
+		width: 300px;
+		padding:10px;
+	}
+	.rateTextInput{
+		width: 60%;
+	}
+	.rate_right {
+		display: block;
+	}
+	.rate_product{
+		font-size: 14px;
+	}
+	.moreDiv>div:first-child{
+		margin-top: 10px;
+	}
+	.order_total_price {
+		font-size: 14px;
+	}
+	.priceNum {
+		font-size: 20px;
+	}
+}
+/* ---------end of 購買紀錄------------- */
+/* 我的最愛 */
+.favImg img{
+	width: 100%;
+}
+.myFavorites{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	text-align: start;
+}
+.fav{
+	padding: 10px 10px 10px 10px;
+	margin: 10px;
+	background-color: rgb(241, 238, 238);
+	/* border: #999c9e 2px solid; */
+	/* box-shadow: 5px 5px 5px #aaaaaa; */
+	/* border-radius: 15px; */
+	width: 18%;
+	letter-spacing: 1px;
+}
+
+.favImg{
+	width: 100%;
+	border-radius: 3px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+
+}
+.favBottom{
+	display: flex;
+	justify-content: space-between;
+	font-size: 13px;
+}
+.favTitle{
+	margin: 8px 0px 3px 0px;
+	font-size: 15px;
+}
+.favImg>img{
+	width: 80%;
+	/* opacity: 0.8; */
+	transition: ease .5s;
+}
+.favImg>img:hover{
+	opacity: 1;
+}
+.favcolors{
+	margin: 5px 0px 5px 0px;
+	display: flex;
+}
+.favColor{
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+@media(max-width:900px){
+	.fav{
+		width: 23%;
+	}
+}
+@media(max-width:550px){
+	.fav{
+		width: 40%;
+		margin: 0px;
+	}
+	.favTitle{
+		font-size: 13px;
+	}
+}
+/* 評價 */
+.rate_picture img{
+	width: 100%;
+}
+.darkbgc{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgb(56, 55, 55);
+	opacity: 0.7;
+}
+.rateBoard{
+	position: fixed;
+	border-radius: 10px;
+	/* padding: 20px 25px; */
+	top: 200px;
+	left: 50%;
+	transform: translate(-50%,0);
+    background-color: white;
+    opacity: 1;
+}
+.rateTitle{
+	display: flex;
+	justify-content: space-between;
+	border-bottom: solid 2px rgb(158, 156, 156);
+}
+.rateTitleContent{
+	font-size: 20px;
+	margin-bottom: 5px;
+	letter-spacing: 1px;
+}
+.closeRateBoard{
+	cursor: pointer;
+}
+.rate_item_detail{
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+.rate_picture{
+	width: 70px;
+}
+.rate_left{
+	display: flex;
+}
+
+.rate_right2{
+	width: 300px;
+}
+.rate_product{
+	margin-left: 10px;
+	text-align: left;
+	letter-spacing: 2px;
+}
+.detailText{
+	color: #878888;
+	font-size: 10px;
+}
+
+.rate_bottom{
+	display: flex;
+	align-items: flex-end;
+	/* margin-left: 40px; */
+}
+.rateBtn{
+	background-color: rgb(70, 78, 94);
+	color: #fff;
+	/* padding: 5px 10px; */
+	border-radius: 5px;
+	cursor: pointer;
+}
+textarea{
+	border-radius: 5px;
+}
+.rateTextInput{
+	margin-top: 16px;
+	/* width: 100%; */
+	background-color: rgb(248, 244, 244);
+	
+}
+
+/* 星星評價 */
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+        fieldset, label { margin: 0; padding: 0; }
+
+        /****** Style Star Rating Widget *****/
+
+        .rating { 
+        border: none;
+        float: left;
+        }
+
+        .rating > input { display: none; } 
+        .rating > label:before { 
+        margin: 0px 5px;
+        font-size: 16px;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+        }
+
+        .rating > .half:before { 
+        content: "\f089";
+        position: absolute;
+        }
+
+        .rating > label { 
+        color: #ddd; 
+        float: right; 
+        }
+
+        /***** CSS Magic to Highlight Stars on Hover *****/
+
+        .rating > input:checked ~ label, /* show gold star when clicked */
+        .rating:not(:checked) > label:hover, /* hover current star */
+        .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+       
+
+
+
+/* ------------------------------------- */
+/* @media(max-width:600px){
+	main{
+		padding-top:50px;padding-bottom:300px;
+	}
+}
+.headline
+main>.view>.headline{
+	padding-bottom:15px;border-bottom:1px solid #979797;
+	
+}
+.profile 
+main>.view>.profile{
+	display:flex;align-items:center;margin-top:40px;
+}
+main>.view>.profile>.picture{
+	flex:none;width:200px;margin-left:50px;margin-right:10px;
+}
+main>.view>.profile>.picture>img{
+	width:100%;
+}
+main>.view>.profile>.details{
+	flex:auto;line-height:2em;font-size:1.2em;
+	overflow-x:hidden;white-space:nowrap;
+}
+@media (max-width:600px){
+	main>.view>.profile{
+		flex-wrap:wrap;justify-content:center;margin-top:20px;
+	}
+	main>.view>.profile>.picture{
+		margin:0px;
+	}
+	main>.view>.profile>.details{
+		flex:none;width:100%;margin-top:20px;
+	}
+} */
